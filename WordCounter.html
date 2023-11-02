@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="SCREENSHOT-photos/Screenshot-1.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-fluid {
+        height: 100vh;
+        display: flex;
+        background-color: beige;
+        place-content: center;
+        align-items: center;
+    }
+
+    .counterBox {
+        height: 100%;
+        width: 100%;
+        border: 2px solid indianred;
+        background-color: indianred;
+        margin: 0;
+        padding: 0;
+        border-radius: 10px;
+    }
+
+    #counterHeading {
+
+        height: 50px;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    #txtfield {
+        height: 350px;
+        width: 100%;
+        resize: none;
+        border: 1px solid indianred;
+        padding: 10px;
+        outline: indianred;
+    }
+
+    #countValue {
+        height: 85px;
+        text-align: center;
+        text-transform: uppercase;
+        color: whitesmoke;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    #words,
+    #characters {
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-10 col-md-8 col-lg-6 counterBox">
+                <h2 id="counterHeading">word and character counter</h2>
+                <textarea name="textarea" id="txtfield" cols="30" rows="10"></textarea>
+                <div id="countValue">
+                    <p><span id="words">0 </span> words</p>
+                    <p><span id="characters">0 </span> characters</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let textfield = document.querySelector('#txtfield');
+        let charValue = document.querySelector('#characters');
+        let wordValue = document.querySelector('#words');
+        textfield.addEventListener('input',()=>{
+            let txtlength = textfield.value;
+            charValue.innerText=txtlength.length;
+
+            txtlength = txtlength.trim();
+
+            let wordlength = txtlength.split(" ")
+            let wordCount =wordlength.filter(function(a){
+                return a!="";
+            });
+            let counterWord = wordCount.length;
+            wordValue.innerHTML = counterWord;
+        });
+
+    </script>
+</body>
+
+</html>
